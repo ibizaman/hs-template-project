@@ -1,0 +1,51 @@
+# https://github.com/sol/hpack
+
+name:                hs-template-project
+version:             0.0.0.1
+github:              "ibizaman/hs-template-project"
+license:             BSD3
+author:              "Pierre Penninckx"
+maintainer:          "ibizapeanut@gmail.com"
+copyright:           "2020 Pierre Penninckx"
+
+description:         Please see the README on GitHub at <https://github.com/ibizaman/hs-template-project#readme>
+
+dependencies:
+  - base
+
+library:
+  source-dirs: src
+
+executables:
+  hs-template-project:
+    main:                main.hs
+    source-dirs:         app
+    dependencies:
+      - hs-template-project
+
+tests:
+  hs-template-project-test:
+    main:                Spec.hs
+    source-dirs:         test
+    dependencies:
+      - hs-template-project
+      - hspec == 2.7.1
+      - hspec-core == 2.7.1
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wredundant-constraints
+  - -fwarn-incomplete-patterns
+  - -fwarn-incomplete-record-updates
+  - -fwarn-incomplete-uni-patterns
+  - -fwarn-missing-signatures
+  - -fwarn-name-shadowing
+  - -fwarn-overlapping-patterns
+  - -fwarn-tabs
+  - -fwarn-unused-imports
+  - -rtsopts
+  - -threaded
+  - -with-rtsopts=-N
