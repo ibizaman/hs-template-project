@@ -1,0 +1,53 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Setup Haskell
+        uses: actions/setup-haskell@v1
+        with:
+          ghc-version: '8.6.5'
+
+      - name: Cache Haskell packages
+        uses: actions/cache@v1
+        with:
+          path: vendor/stack
+          key: ${{ runner.OS }}-build-${{ hashFiles('stack.yaml.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Build Haskell code
+        run: |
+          stack --jobs 8 \
+                --stack-root $GITHUB_WORKSPACE/vendor/stack \
+                build \
+                --haddock \
+                --haddock-deps
+
+      - name: Test Haskell code
+        run: |
+          stack --jobs 8 \
+                --stack-root $GITHUB_WORKSPACE/vendor/stack \
+                test
+
+      - name: Build artifacts
+        run: |
+          stack --stack-root $GITHUB_WORKSPACE/vendor/stack \
+                --local-bin-path $GITHUB_WORKSPACE/bin \
+                install
+          chmod a+x $GITHUB_WORKSPACE/bin/hs-template-project
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: hs-template-project
+          path: bin
