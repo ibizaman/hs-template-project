@@ -16,15 +16,15 @@ jobs:
         with:
           ghc-version: '8.6.5'
 
-      - name: Cache Haskell packages
-        uses: actions/cache@v1
-        with:
-          path: vendor/stack
-          key: ${{ runner.OS }}-build-${{ hashFiles('stack.yaml.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+      #- name: Cache Haskell packages
+      #  uses: actions/cache@v1
+      #  with:
+      #    path: vendor/stack
+      #    key: ${{ runner.OS }}-build-${{ hashFiles('stack.yaml.lock') }}
+      #    restore-keys: |
+      #      ${{ runner.OS }}-build-${{ env.cache-name }}-
+      #      ${{ runner.OS }}-build-
+      #      ${{ runner.OS }}-
 
       - name: Build Haskell code
         run: |
