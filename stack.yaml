@@ -2,6 +2,3 @@ resolver: lts-14.17
 
 packages:
   - .
-
-extra-deps:
-  - haskell-src-exts-1.23.0
