@@ -1,0 +1,7 @@
+# https://github.com/haskell/haskell-ide-engine/issues/1564#issuecomment-574760343
+cradle:
+  stack:
+    - path: ./test
+      component: "hs-template-project:test:hs-template-project-test"
+    - path: ./src
+      component: "hs-template-project:lib"
