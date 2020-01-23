@@ -29,6 +29,23 @@ stack hoogle -- server --local --port=65000
 
 Then point your browser at http://localhost:65000.
 
+## Build code and reload daemons on change
+
+A `modd` https://github.com/cortesi/modd config file is provided so
+that all of the above commands are ran as necessary when a source file
+changes. To use it, simply run the following in the project's root:
+
+```
+modd
+```
+
+## Language Server Protocol
+
+A haskell-ide-engine https://github.com/haskell/haskell-ide-engine
+config file `hie.yaml` is provided. The config file allows the LSP
+server to work on test files, see
+https://github.com/haskell/haskell-ide-engine/issues/1564#issuecomment-574760343.
+
 ## Github Action
 
 This template project includes a github action workflow which builds
