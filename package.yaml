@@ -31,6 +31,7 @@ tests:
       - hs-template-project
       - hspec == 2.7.1
       - hspec-core == 2.7.1
+      - hspec-discover == 2.7.1
 
 ghc-options:
   - -Wall
