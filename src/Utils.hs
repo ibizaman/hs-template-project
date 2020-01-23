@@ -1,6 +1,7 @@
 module Utils
-  ( equal )
-  where
+    ( equal
+    )
+where
 
 equal :: Eq a => a -> a -> Bool
 equal = (==)

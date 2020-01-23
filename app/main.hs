@@ -1,8 +1,9 @@
 module Main
-  ( main
-  ) where
+    ( main
+    )
+where
 
-import qualified Utils as U
+import qualified Utils                         as U
 
 main :: IO ()
 main = if U.equal True True then putStrLn "Hello World" else putStrLn "Bye"
